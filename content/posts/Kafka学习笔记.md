@@ -1,3 +1,11 @@
+---
+title: "Kafka学习笔记"
+date: 2025-01-09
+draft: false
+tags: ["学习笔记"]
+categories: ["学习"]
+---
+
 # Kafka学习笔记
 
 ## Kafka简要介绍
