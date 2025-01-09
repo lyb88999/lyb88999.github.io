@@ -1,4 +1,4 @@
-baseURL = "https://lyb88999.github.io"
+baseURL = "https://lyb88999.github.io/"
 title = "YuboLee's Blog"
 theme = "PaperMod"
 [pagination]
