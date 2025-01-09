@@ -1,0 +1,123 @@
+baseURL = "https://lyb88999.github.io"
+title = "YuboLee's Blog"
+theme = "PaperMod"
+[pagination]
+pagerSize = 5
+
+# 基本设置
+enableRobotsTXT = true
+buildDrafts = false
+buildFuture = false
+buildExpired = false
+
+[minify]
+disableXML = true
+minifyOutput = true
+
+[params]
+env = "production"
+title = "YuboLee's Blog"
+description = "分享生活，记录成长"
+keywords = ["Golang", "Python"]
+author = "YuboLee"
+DateFormat = "2006-01-02"
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowShareButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowCodeCopyButtons = true
+ShowWordCount = true
+ShowRssButtonInSectionTermList = true
+UseHugoToc = true
+disableSpecial1stPost = false
+disableScrollToTop = false
+comments = true
+hidemeta = false
+hideSummary = false
+showtoc = true
+tocopen = false
+ShowSearchButton = true
+searchHidden = true
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+[params.fuseOpts]
+isCaseSensitive = false
+shouldSort = true
+location = 0
+distance = 1000
+threshold = 0.4
+minMatchCharLength = 0
+limit = 10
+keys = ["title", "permalink", "summary", "content"]
+
+[params.profileMode]
+enabled = false
+title = "YuboLee's Blog"
+subtitle = "Welcome to my blog"
+imageUrl = "#"
+imageWidth = 120
+imageHeight = 120
+imageTitle = "profile image"
+
+[[params.profileMode.buttons]]
+name = "文章"
+url = "posts"
+
+[[params.profileMode.buttons]]
+name = "标签"
+url = "tags"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/lyb88999"
+
+[menu]
+[[menu.main]]
+identifier = "categories"
+name = "分类"
+url = "/categories/"
+weight = 10
+
+[[menu.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 20
+
+[[menu.main]]
+identifier = "archives"
+name = "归档"
+url = "/archives/"
+weight = 30
+
+[[menu.main]]
+identifier = "search"
+name = "搜索"
+url = "/search/"
+weight = 40
+
+# 添加 giscus 评论系统配置
+[params.giscus]
+repo = "lyb88999/lyb88999.github.io"        # 替换为你的仓库
+repoID = "R_kgDONn4ymQ"                        # 从 giscus.app 获取
+category = "Announcements"                    # 替换为你想使用的分类
+categoryID = "DIC_kwDONn4ymc4Cl3e_"                    # 从 giscus.app 获取
+mapping = "pathname"                         # 可选: pathname | url | title
+reactionsEnabled = "1"                       # 启用反应
+emitMetadata = "0"                          # 不发送元数据
+inputPosition = "bottom"                     # 输入框位置
+theme = "preferred_color_scheme"             # 主题
+lang = "zh-CN"                              # 语言设置
+
+[params.homeInfoParams]
+Title = "搜索"
+Content = "搜索全站内容"
+
+[markup]
+[markup.highlight]
+noClasses = false
+lineNos = true
+style = "monokai"

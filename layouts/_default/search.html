@@ -1,0 +1,107 @@
+{{- define "main" }}
+
+<header class="page-header">
+    <h1>{{ .Title }}
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+    </h1>
+    {{- if .Description }}
+    <div class="post-description">{{ .Description }}</div>
+    {{- end }}
+</header>
+
+<div id="searchbox">
+    <input id="searchInput" autofocus placeholder="输入标题或内容..." aria-label="search" type="search" autocomplete="off">
+    <ul id="searchResults" aria-label="search results"></ul>
+</div>
+
+<script>
+    var baseurl = "{{ .Site.BaseURL }}";
+</script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script>
+    let index = null;
+    let fuse = null;
+    let results = null;
+
+    const searchInput = document.getElementById("searchInput");
+    const searchResults = document.getElementById("searchResults");
+
+    // 获取索引文件
+    fetch(baseurl + 'index.json')
+        .then(response => response.json())
+        .then(data => {
+            index = data;
+            fuse = new Fuse(index, {
+                keys: ['title', 'content', 'summary'],
+                includeMatches: true,
+                minMatchCharLength: 2,
+                threshold: 0.1
+            });
+        });
+
+    // 处理搜索
+    searchInput.addEventListener('input', () => {
+        const searchQuery = searchInput.value;
+        if (searchQuery.length < 2) {
+            searchResults.innerHTML = '';
+            return;
+        }
+        results = fuse.search(searchQuery);
+        // 显示结果
+        if (results.length > 0) {
+            searchResults.innerHTML = results
+                .map(result => {
+                    return `<li><a href="${result.item.permalink}">${result.item.title}</a></li>`;
+                })
+                .join('');
+        } else {
+            searchResults.innerHTML = '<li>未找到相关内容</li>';
+        }
+    });
+</script>
+
+<style>
+    #searchbox {
+        margin: 2em auto;
+        max-width: 720px;
+        padding: 0 2em;
+    }
+
+    #searchbox input {
+        width: 100%;
+        padding: 1em;
+        border: 2px solid var(--border);
+        border-radius: 4px;
+        background-color: var(--entry);
+        color: var(--primary);
+        font-size: 16px;
+    }
+
+    #searchResults {
+        margin-top: 1em;
+        padding: 0;
+        list-style: none;
+    }
+
+    #searchResults li {
+        margin: 1em 0;
+        padding: 0.5em;
+        border-radius: 4px;
+        background-color: var(--entry);
+    }
+
+    #searchResults a {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    #searchResults a:hover {
+        text-decoration: underline;
+    }
+</style>
+
+{{- end }} 
