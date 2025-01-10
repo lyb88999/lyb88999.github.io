@@ -1,3 +1,11 @@
+---
+title: "ES学习笔记"
+date: 2025-01-10
+draft: false
+tags: ["学习笔记", "Elasticsearch"]
+categories: ["学习"]
+---
+
 # ES学习笔记
 
 ## ES基本概念

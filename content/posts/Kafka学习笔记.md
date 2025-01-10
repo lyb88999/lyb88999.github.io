@@ -2,7 +2,7 @@
 title: "Kafka学习笔记"
 date: 2025-01-09
 draft: false
-tags: ["学习笔记"]
+tags: ["学习笔记", "Kafka"]
 categories: ["学习"]
 ---
 
